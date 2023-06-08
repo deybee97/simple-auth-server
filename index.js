@@ -24,10 +24,14 @@ app.post('/api/v1/authSignUp',(req,res)=>{
     const {email, password} = req.body
 
     if( !regexPassword.test(password)){
-        res.status(400).send({msg:'invalid password'})
+       console.log('entered')
+        return res.status(400).send({msg:'invalid password'})
+        
     }
     if(! regexEmail.test(email)){
-        res.status(400).send({msg:'invalid email'})
+      console.log('entered')
+        return res.status(400).send({msg:'invalid email'})
+        
     }
 
      
@@ -63,7 +67,7 @@ app.post('/api/v1/authSignUp',(req,res)=>{
 
                   const token = jwt.sign({email}, jwtSecret)
 
-                  res.status(201).send({token})
+                  return res.status(201).send({token})
                 }
               });
 
